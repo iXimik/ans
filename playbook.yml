@@ -1,0 +1,11 @@
+---
+- name: Execute whoami script on remote server
+  hosts: all
+  tasks:
+    - name: Run whoami command
+      command: whoami
+      register: output
+
+    - name: Print the output
+      debug:
+        var: output.stdout

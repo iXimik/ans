@@ -1,6 +1,10 @@
 - name: Execute whoami and pwd commands on remote server
   hosts: 1.1.1.45
   tasks:
+    - name: Run shell commands
+      shell: |
+        echo "Current directory: $(pwd)"
+        echo "Executing user: $(whoami)"
     - name: Run whoami command
       command: whoami
       register: whoami_output

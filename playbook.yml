@@ -1,19 +1,26 @@
----
 - name: Execute whoami and pwd commands on remote server
-  hosts: all
+  hosts: 1.1.1.45
   tasks:
     - name: Run whoami command
       command: whoami
       register: whoami_output
 
     - name: Print whoami output
+      shell: echo "{{ whoami_output.stdout }}"
+      register: whoami_echo_output
+
+    - name: Print whoami echo output
       debug:
-        msg: "Whoami output: {{ whoami_output.stdout }}"
+        var: whoami_echo_output.stdout
 
     - name: Run pwd command
       command: pwd
       register: pwd_output
 
     - name: Print pwd output
+      shell: echo "{{ pwd_output.stdout }}"
+      register: pwd_echo_output
+
+    - name: Print pwd echo output
       debug:
-        msg: "Pwd output: {{ pwd_output.stdout }}"
+        var: pwd_echo_output.stdout

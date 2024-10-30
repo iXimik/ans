@@ -1,3 +1,4 @@
+---
 - name: Execute whoami and pwd commands on remote server
   hosts: all
   tasks:
@@ -7,7 +8,7 @@
 
     - name: Print whoami output
       debug:
-        var: whoami_output.stdout
+        msg: "Whoami output: {{ whoami_output.stdout }}"
 
     - name: Run pwd command
       command: pwd
@@ -15,4 +16,4 @@
 
     - name: Print pwd output
       debug:
-        var: pwd_output.stdout
+        msg: "Pwd output: {{ pwd_output.stdout }}"

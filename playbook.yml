@@ -1,5 +1,5 @@
 - name: Execute whoami and pwd commands on remote server
-  hosts: 1.1.1.45
+  hosts: all
   tasks:
     - name: Run whoami command
       command: whoami

@@ -10,10 +10,12 @@ pipeline {
         }
         stage('Run Ansible Playbook') {
             steps {
+                // Запустим Ansible Playbook
                 ansiblePlaybook(
                     playbook: 'playbook.yml',
                     inventory: 'inventory.ini',
-                    extras: '-u iXimik -k' // -k для запроса пароля SSH
+                    extras: '-u iXimik -k', // -k для запроса пароля SSH
+                    colorized: true // Для цветного вывода, если поддерживается
                 )
             }
         }

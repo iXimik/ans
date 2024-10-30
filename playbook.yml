@@ -1,11 +1,18 @@
----
-- name: Execute whoami script on remote server
-  hosts: all
+- name: Execute whoami and pwd commands on remote server
+  hosts: 1.1.1.45
   tasks:
     - name: Run whoami command
       command: whoami
-      register: output
+      register: whoami_output
 
-    - name: Print the output
+    - name: Print whoami output
       debug:
-        var: output.stdout
+        var: whoami_output.stdout
+
+    - name: Run pwd command
+      command: pwd
+      register: pwd_output
+
+    - name: Print pwd output
+      debug:
+        var: pwd_output.stdout
